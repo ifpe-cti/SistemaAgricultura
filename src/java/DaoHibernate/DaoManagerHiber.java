@@ -1,14 +1,11 @@
 package DaoHibernate;
 
 import java.util.List;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.criterion.Example;
-import org.hibernate.criterion.MatchMode;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 public class DaoManagerHiber {
@@ -64,18 +61,6 @@ public class DaoManagerHiber {
         return query.list();
     }
 
-    public static List recover(Object o) {
-
-        Criteria c = s.createCriteria(o.getClass());
-
-        c.add(Example.create(o).enableLike(MatchMode.ANYWHERE).ignoreCase().excludeProperty("codigo"));
-
-        List l = c.list();
-        s.flush();
-
-        return l;
-    }
-
     public static void update(Object o) {
 
         Transaction tr = s.beginTransaction();
@@ -98,6 +83,11 @@ public class DaoManagerHiber {
         s.flush();
     }
 
+    public static Object recoverPrimeiro(String hql) {
+        return recover(hql).get(0);
+    }
+    
+    
     public static void main(String args[]) {
         SchemaExport se = new SchemaExport(new AnnotationConfiguration().configure());
         se.create(true, true);

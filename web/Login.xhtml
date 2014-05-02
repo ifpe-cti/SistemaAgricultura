@@ -34,17 +34,17 @@
                 <h:form>
                     <h:panelGrid columns = "2">
                         <h:outputText value = "Nome: " />
-                        <p:inputText value = "" />
+                        <p:inputText value = "#{agricultor.nome}" />
                         <h:outputText value = "Celular: " />
-                        <p:inputMask value = "" mask = "(99)9999-9999" />
+                        <p:inputMask value = "#{agricultor.telefone}" mask = "(99)9999-9999" />
                         <h:outputText value = "E-mail: "/>
-                        <p:inputText value = "" />
+                        <p:inputText value = "#{agricultor.email}" />
                         <h:outputText value = "Senha: " />
-                        <p:password value = "" feedback = "true" />
+                        <p:password value = "#{agricultor.senha}" feedback = "true" />
                         <h:outputText value = "Confirma Senha: " />
-                        <p:password value = "" feedback = "true" />
+                        <p:password value = "#{agricultor.senha}" feedback = "true" />
                     </h:panelGrid>
-                    <p:commandButton value = "Cadastrar" />
+                    <p:commandButton value = "Cadastrar" action="#{controladorA.inserir(agricultor)}"/>
                 </h:form>                
             </p:layoutUnit>
 

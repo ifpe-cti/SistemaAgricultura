@@ -7,5 +7,6 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/SistemaAgricultura</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
+    <mapping class="Negocio.Agricultor"/>
   </session-factory>
 </hibernate-configuration>

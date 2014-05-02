@@ -16,21 +16,21 @@ public class RepositorioImplementacaoAgricultorBD implements RepositorioInterfac
 
     @Override
     public Agricultor recuperar(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Agricultor) DaoHibernate.DaoManagerHiber.recoverPrimeiro("from agricultor where id = " + id);
     }
 
     @Override
     public void adicionar(Agricultor agricultor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DaoHibernate.DaoManagerHiber.persist(agricultor);
     }
 
     @Override
     public void atualizar(Agricultor agricultor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DaoHibernate.DaoManagerHiber.update(agricultor);
     }
 
     @Override
     public void remover(Agricultor agricultor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DaoHibernate.DaoManagerHiber.delete(agricultor);
     }
 }

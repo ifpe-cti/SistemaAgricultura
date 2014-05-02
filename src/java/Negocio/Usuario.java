@@ -17,9 +17,9 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(String Email, String senha) {
+    public Usuario(String email, String senha) {
 
-        this.email = Email;
+        this.email = email;
         this.senha = senha;
     }
 
@@ -52,5 +52,4 @@ public class Usuario implements Serializable {
             return senha;
         }
     }
-
 }

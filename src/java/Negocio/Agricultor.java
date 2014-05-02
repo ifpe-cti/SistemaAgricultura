@@ -3,6 +3,7 @@ package Negocio;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 
 @Entity
 @ManagedBean(name = "agricultor")
+@SessionScoped
 public class Agricultor implements Serializable {
 
     @Id
@@ -23,7 +25,7 @@ public class Agricultor implements Serializable {
     private String telefone;
 
     @Embedded
-    private Usuario usuario;
+    private Usuario usuario = new Usuario();
     
     List<Cultivo> listaCultivo = null;
 
@@ -38,6 +40,15 @@ public class Agricultor implements Serializable {
         this.celular = celular;
         this.telefone = telefone;
         this.usuario = usuario;
+    }
+
+    public Agricultor(Long id, String nome, Endereco endereco, String celular, String telefone, String email, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.celular = celular;
+        this.telefone = telefone;
+        this.usuario = new Usuario(email, senha);
     }
 
     public Long getId() {
@@ -96,6 +107,22 @@ public class Agricultor implements Serializable {
         this.listaCultivo = listaCultivo;
     }
 
+    public void setEmail(String email) {
+        this.usuario.setEmail(email);
+    }
+    
+    public String getEmail() {
+        return this.usuario.getEmail();
+    }
+    
+    public void setSenha(String senha) {
+        this.usuario.setSenha(senha);
+    }
+    
+    public String getSenha() {
+        return this.usuario.getSenha();
+    }
+    
     @Override
     public String toString() {
         return "Agricultor{" + "nome=" + nome + ", endereco=" + endereco + ", telefone1=" + celular + ", telefone2=" + telefone + ", listaCultivo=" + listaCultivo + '}';
